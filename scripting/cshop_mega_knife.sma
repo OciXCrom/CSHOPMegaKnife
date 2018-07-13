@@ -18,6 +18,7 @@ new g_bHasItem[33], g_szDamage[16]
 public plugin_init()
 {
 	register_plugin("CSHOP: Mega Knife", PLUGIN_VERSION, "OciXCrom")
+	register_cvar("CSHOPMegaKnife", PLUGIN_VERSION, FCVAR_SERVER|FCVAR_SPONLY|FCVAR_UNLOGGED)
 	RegisterHam(Ham_Item_Deploy, "weapon_knife", "OnSelectKnife", 1)
 	RegisterHam(Ham_TakeDamage, "player", "PreTakeDamage", 0)
 	cshop_get_string(ITEM_MEGA_KNIFE, "Amount", g_szDamage, charsmax(g_szDamage))
