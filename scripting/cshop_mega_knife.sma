@@ -62,7 +62,7 @@ public OnSelectKnife(iEnt)
 {
 	new id = get_pdata_cbase(iEnt, m_pPlayer)
 	
-	if(g_bHasItem[id])
+	if(is_user_connected(id) && g_bHasItem[id])
 		RefreshKnifeModel(id)
 }
    
