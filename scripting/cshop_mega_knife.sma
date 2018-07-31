@@ -8,10 +8,6 @@
 #define V_MODEL "models/custom_shop/v_dagger.mdl"
 #define P_MODEL "models/custom_shop/p_dagger.mdl"
 
-#if !defined m_pPlayer
-	#define m_pPlayer 41
-#endif
-
 additem ITEM_MEGA_KNIFE
 new g_bHasItem[33], g_szDamage[16]
 
