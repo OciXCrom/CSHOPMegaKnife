@@ -4,7 +4,7 @@
 #include <fakemeta>
 #include <hamsandwich>
 
-#define PLUGIN_VERSION "1.0"
+#define PLUGIN_VERSION "1.0.1"
 #define V_MODEL "models/custom_shop/v_dagger.mdl"
 #define P_MODEL "models/custom_shop/p_dagger.mdl"
 
@@ -19,7 +19,7 @@ public plugin_init()
 {
 	register_plugin("CSHOP: Mega Knife", PLUGIN_VERSION, "OciXCrom")
 	register_cvar("CSHOPMegaKnife", PLUGIN_VERSION, FCVAR_SERVER|FCVAR_SPONLY|FCVAR_UNLOGGED)
-	RegisterHam(Ham_Item_Deploy, "weapon_knife", "OnSelectKnife", 1)
+	register_event("CurWeapon", "OnSelectKnife", "be", "1=1", "2=29")
 	RegisterHam(Ham_TakeDamage, "player", "PreTakeDamage", 0)
 	cshop_get_string(ITEM_MEGA_KNIFE, "Amount", g_szDamage, charsmax(g_szDamage))
 }
@@ -58,11 +58,9 @@ public cshop_item_removed(id, iItem)
 public client_putinserver(id)
 	g_bHasItem[id] = false
 	
-public OnSelectKnife(iEnt)
-{
-	new id = get_pdata_cbase(iEnt, m_pPlayer)
-	
-	if(is_user_connected(id) && g_bHasItem[id])
+public OnSelectKnife(id)
+{	
+	if(g_bHasItem[id])
 		RefreshKnifeModel(id)
 }
    
